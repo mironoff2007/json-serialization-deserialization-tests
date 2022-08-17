@@ -64,7 +64,7 @@ class JsonDesTest {
             testObject = gson.fromJson(jsonString, object : TypeToken<TestObjectGson>() {}.type)
         }
 
-        println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "s")
+        println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
         assert(testObject.innerClass != null)
     }
 
