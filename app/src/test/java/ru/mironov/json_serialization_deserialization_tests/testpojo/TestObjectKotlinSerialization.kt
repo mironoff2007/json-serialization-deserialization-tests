@@ -1,0 +1,27 @@
+package ru.mironov.json_serialization_deserialization_tests.testpojo
+
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class TestObjectKotlinSerialization(
+
+    @SerialName("field1")
+    var field1: String? = "value1",
+
+    @SerialName("field2")
+    var field2: Int = 2,
+
+    @SerialName("field3")
+    var field3: Boolean = true,
+
+    @SerialName("field4")
+    var field4: Double = 4.0,
+
+    @SerialName("innerClass")
+    var innerClass: TestObjectKotlinSerialization? = null,
+
+    ) {
+
+
+}
