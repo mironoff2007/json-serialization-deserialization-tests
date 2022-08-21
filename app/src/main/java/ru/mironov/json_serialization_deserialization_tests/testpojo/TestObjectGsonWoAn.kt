@@ -1,6 +1,5 @@
 package ru.mironov.json_serialization_deserialization_tests.testpojo
 
-
 data class TestObjectGsonWoAn(
     var field1: String? = "value1",
 
@@ -10,7 +9,9 @@ data class TestObjectGsonWoAn(
 
     var field4: Double = 4.0,
 
-    var innerClass: TestObjectGsonWoAn? = null,
+    var field5: Long = 10000L,
+
+    var innerClass: TestObjectGsonWoAn? = null
 ) {
 
 }

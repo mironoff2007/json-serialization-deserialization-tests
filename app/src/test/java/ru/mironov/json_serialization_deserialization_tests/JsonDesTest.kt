@@ -8,10 +8,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestName
-import ru.mironov.json_serialization_deserialization_tests.testpojo.TestObjectGson
-import ru.mironov.json_serialization_deserialization_tests.testpojo.TestObjectGsonWoAn
-import ru.mironov.json_serialization_deserialization_tests.testpojo.TestObjectJackson
-import ru.mironov.json_serialization_deserialization_tests.testpojo.TestObjectKotlinSerialization
+import ru.mironov.json_serialization_deserialization_tests.testpojo.*
 
 class JsonDesTest {
 
@@ -36,7 +33,8 @@ class JsonDesTest {
                 field1 = "value $it",
                 field2 = it,
                 field3 = it.rem(2) == 0,
-                field4 = 0.0 + it.toDouble()
+                field4 = 0.0 + it.toDouble(),
+                field5 = 1000000L + it*100000L
             )
             currentObject.innerClass = innerObject
             currentObject = currentObject.innerClass!!

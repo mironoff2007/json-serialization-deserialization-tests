@@ -16,8 +16,11 @@ data class TestObjectGson(
     @SerializedName("field4")
     var field4: Double = -1.0,
 
+    @SerializedName("field5")
+    var field5: Long = 10000L,
+
     @SerializedName("innerClass")
-    var innerClass: TestObjectGson? = null,
+    var innerClass: TestObjectGson? = null
 
     ) {
 

@@ -1,5 +1,6 @@
 package ru.mironov.json_serialization_deserialization_tests.testpojo
 
+import com.fasterxml.jackson.annotation.JsonProperty
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -18,8 +19,11 @@ data class TestObjectKotlinSerialization(
     @SerialName("field4")
     var field4: Double = 4.0,
 
+    @SerialName("field5")
+    var field5: Long = 10000L,
+
     @SerialName("innerClass")
-    var innerClass: TestObjectKotlinSerialization? = null,
+    var innerClass: TestObjectKotlinSerialization? = null
 
     ) {
 

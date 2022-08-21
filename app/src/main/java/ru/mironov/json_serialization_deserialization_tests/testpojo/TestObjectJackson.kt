@@ -3,6 +3,7 @@ package ru.mironov.json_serialization_deserialization_tests.testpojo
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
+import com.google.gson.annotations.SerializedName
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class TestObjectJackson(
@@ -22,9 +23,13 @@ data class TestObjectJackson(
     @param:JsonProperty("field4")
     var field4: Double = 4.0,
 
+    @field:JsonProperty("field5")
+    @param:JsonProperty("field5")
+    var field5: Long = 10000L,
+
     @field:JsonProperty("innerClass")
     @param:JsonProperty("innerClass")
-    var innerClass: TestObjectJackson? = null,
+    var innerClass: TestObjectJackson? = null
 ) {
 
 }
