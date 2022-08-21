@@ -19,6 +19,9 @@ data class TestObjectGson(
     @SerializedName("field5")
     var field5: Long = 10000L,
 
+    @SerializedName("field6")
+    var field6: TestObjectKotlinSerialization? = null,
+
     @SerializedName("innerClass")
     var innerClass: TestObjectGson? = null
 

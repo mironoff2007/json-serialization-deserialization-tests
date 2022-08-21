@@ -11,6 +11,8 @@ data class TestObjectGsonWoAn(
 
     var field5: Long = 10000L,
 
+    var field6: TestObjectKotlinSerialization? = null,
+
     var innerClass: TestObjectGsonWoAn? = null
 ) {
 

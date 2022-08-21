@@ -27,6 +27,10 @@ data class TestObjectJackson(
     @param:JsonProperty("field5")
     var field5: Long = 10000L,
 
+    @field:JsonProperty("field6")
+    @param:JsonProperty("field6")
+    var field6: TestObjectKotlinSerialization? = null,
+
     @field:JsonProperty("innerClass")
     @param:JsonProperty("innerClass")
     var innerClass: TestObjectJackson? = null

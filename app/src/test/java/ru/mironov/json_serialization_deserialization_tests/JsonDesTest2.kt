@@ -14,8 +14,6 @@ class JsonDesTest2 {
 
     private var time = 0L
 
-    private val testObject = TestObjectGson()
-
     private val listObjectsStrings = mutableListOf<String>()
 
     private var jsonString = ""
@@ -26,25 +24,33 @@ class JsonDesTest2 {
     @get:Rule
     var testName: TestName = TestName()
 
+    val gson = Gson()
+
+    init {
+        gson.serializeNulls()
+    }
+
     @Before
     fun before() {
 
         listObjectsStrings.clear()
 
-        var currentObject = testObject
+
         repeat(repeatCount) { ind ->
+            var testObject = TestObjectGson()
+            var currentObject = testObject
             repeat(innerClasses) {
                 val innerObject = TestObjectGson(
-                    field1 = "value $ind",
-                    field2 = ind,
+                    field1 = "value ${ind*10+it}",
+                    field2 = ind*10+it,
                     field3 = ind.rem(2) == 0,
-                    field4 = 0.0 + it.toDouble(),
-                    field5 = 1000000L + ind * 100000L
+                    field4 = 0.0 + ind.toDouble()+it,
+                    field5 = 1000000L + ind * 100000L+it
                 )
                 currentObject.innerClass = innerObject
                 currentObject = currentObject.innerClass!!
             }
-            jsonString = Gson().toJson(testObject)
+            jsonString = gson.toJson(testObject)
 
             listObjectsStrings.add(jsonString)
         }
@@ -55,21 +61,21 @@ class JsonDesTest2 {
 
     @Test
     fun gsonTest() {
-        val gson = Gson()
+        var obj : TestObjectGson? = null
 
         time = System.currentTimeMillis()
 
         listObjectsStrings.forEach {
-            gson.fromJson(it, object : TypeToken<TestObjectGson>() {}.type)
+            obj = gson.fromJson(it, object : TypeToken<TestObjectGson>() {}.type)
         }
 
         println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
-        assert(true)
+        assert(obj?.field6 == null)
     }
 
     @Test
     fun gsonTestWithoutAnnotations() {
-        val gson = Gson()
+        var obj : TestObjectGsonWoAn? = null
 
         time = System.currentTimeMillis()
 
@@ -78,11 +84,12 @@ class JsonDesTest2 {
         }
 
         println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
-        assert(true)
+        assert(obj?.field6 == null)
     }
 
     @Test
     fun kotlinSerializationTest() {
+        var obj : TestObjectKotlinSerialization? = null
 
         val format = Json { ignoreUnknownKeys = true }
         val serializer = TestObjectKotlinSerialization.serializer()
@@ -90,25 +97,26 @@ class JsonDesTest2 {
         time = System.currentTimeMillis()
 
         listObjectsStrings.forEach {
-            format.decodeFromString(serializer, it)
+            obj = format.decodeFromString(serializer, it)
         }
 
         println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
-        assert(true)
+        assert(obj?.field6 == null)
     }
 
     @Test
     fun jacksonTest() {
+        var obj : TestObjectJackson? = null
         val mapper = ObjectMapper()
 
         time = System.currentTimeMillis()
 
         listObjectsStrings.forEach {
-            mapper.readValue(it, TestObjectJackson::class.java)
+            obj = mapper.readValue(it, TestObjectJackson::class.java)
         }
 
         println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
-        assert(true)
+        assert(obj?.field6 == null)
     }
 
 
