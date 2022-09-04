@@ -18,8 +18,8 @@ class JsonDesTest2 {
 
     private var jsonString = ""
 
-    private val repeatCount = 200
-    private val innerClasses = 10
+    private val repeatCount = 5000
+    private val innerClasses = 20
 
     @get:Rule
     var testName: TestName = TestName()
@@ -32,32 +32,26 @@ class JsonDesTest2 {
 
     @Before
     fun before() {
-
         listObjectsStrings.clear()
-
-
         repeat(repeatCount) { ind ->
             var testObject = TestObjectGson()
             var currentObject = testObject
             repeat(innerClasses) {
                 val innerObject = TestObjectGson(
-                    field1 = "value ${ind*10+it}",
-                    field2 = ind*10+it,
+                    field1 = "value $it",
+                    field2 = 10+it,
                     field3 = ind.rem(2) == 0,
-                    field4 = 0.0 + ind.toDouble()+it,
-                    field5 = 1000000L + ind * 100000L+it
+                    field4 = 0.0 + +it,
+                    field5 = 1000000L + it
                 )
                 currentObject.innerClass = innerObject
                 currentObject = currentObject.innerClass!!
             }
             jsonString = gson.toJson(testObject)
-
             listObjectsStrings.add(jsonString)
         }
-
         println()
     }
-
 
     @Test
     fun gsonTest() {
