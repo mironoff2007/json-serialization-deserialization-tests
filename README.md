@@ -22,6 +22,9 @@ kotlin version for other - 1.6.21
 
 ![image](https://user-images.githubusercontent.com/18057056/188313406-da14eb1b-0f20-4ae3-8140-2e7070420c89.png)
 
+To reproduce find in JsonDesTest.kt in test folder and run. Moshi test is located in deparate repo,  find. 
+JsonDesTest.kt in moshi repo link is located above. 
+
 * big disadvantage of moshi is conflicts with kotlin version. I could not build moshi test with kotlin versions 1.5-1.7.  
 Maybe there is solution to build it,  but it is painfull to find it.  I love "out of the box" solutions.
  
