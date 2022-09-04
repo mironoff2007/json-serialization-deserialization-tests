@@ -1,11 +1,11 @@
 # json-serialization-deserialization-tests
 
 Comparison of json deserialization:
-  <br />gson
-  <br />gson without annotations
-  <br />jackson 
-  <br />kotlinx
-  <br />moshi (see code https://github.com/mironoff2007/moshi-deserialization-test)
+  <br />-gson
+  <br />-gson without annotations
+  <br />-jackson 
+  <br />-kotlinx
+  <br />-moshi (see code https://github.com/mironoff2007/moshi-deserialization-test)
   
 kotlin version for moshi - 1.3.72*
 kotlin version for other - 1.6.21
@@ -22,5 +22,6 @@ kotlin version for other - 1.6.21
 
 ![image](https://user-images.githubusercontent.com/18057056/188313406-da14eb1b-0f20-4ae3-8140-2e7070420c89.png)
 
-* big disadvantage of moshi is conflicts wuth kotlin version.  I can't build moshi test with kotlin versions 1.5-1.7.  
-Maybe there is solution to build it,  but it is painfull
+* big disadvantage of moshi is conflicts with kotlin version. I could not build moshi test with kotlin versions 1.5-1.7.  
+Maybe there is solution to build it,  but it is painfull to find it.  I love "out of the box" solutions.
+ 
