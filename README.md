@@ -10,7 +10,7 @@ Comparison of json deserialization:
   Deserialization of list with 5000 objects-tree of 20 classes. Each object has 5 different fields (string,  double,  boolean, long, int) and field of class with same type and one field which is allways null.
 This object was generated with auto incremented fileds value and converted to json string. 
   
-
+  Each test was repeted 10 times. 
   Time of initialization of deserilizer for each library is not included in test. 
   Run time in ms,  lower is better. 
 ![image](https://user-images.githubusercontent.com/18057056/188313381-e142388e-f03c-4657-bbb9-6d0327b97b91.png)
