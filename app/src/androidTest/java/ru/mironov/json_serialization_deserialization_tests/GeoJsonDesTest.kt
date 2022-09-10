@@ -1,4 +1,4 @@
-package com.mironov.json_serialization_deserialization_tests
+package ru.mironov.json_serialization_deserialization_tests
 
 
 import org.junit.Before
