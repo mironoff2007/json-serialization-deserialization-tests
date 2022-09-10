@@ -2,6 +2,7 @@ package ru.mironov.json_serialization_deserialization_tests.testpojo
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import kotlinx.serialization.SerialName
 
 @JsonClass(generateAdapter = true)
 data class TestObjectMoshi(
@@ -22,6 +23,12 @@ data class TestObjectMoshi(
 
     @Json(name = "field6")
     var field6: TestObjectMoshi? = null,
+
+    @Json(name = "field7")
+    var field7: String? = null,
+
+    @Json(name = "field78")
+    var field8: String? = null,
 
     @Json(name = "innerClass")
     var innerClass: TestObjectMoshi? = null

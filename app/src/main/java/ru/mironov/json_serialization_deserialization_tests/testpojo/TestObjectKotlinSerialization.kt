@@ -26,6 +26,12 @@ data class TestObjectKotlinSerialization(
     @SerialName("field6")
     var field6: TestObjectKotlinSerialization? = null,
 
+    @SerialName("field7")
+    var field7: String? = null,
+
+    @SerialName("field8")
+    var field8: Byte? = null,
+
     @SerialName("innerClass")
     var innerClass: TestObjectKotlinSerialization? = null
 

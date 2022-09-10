@@ -22,6 +22,12 @@ data class TestObjectGson(
     @SerializedName("field6")
     var field6: TestObjectGson? = null,
 
+    @SerializedName("field7")
+    var field7: String? = null,
+
+    @SerializedName("field8")
+    var field8: Byte? = null,
+
     @SerializedName("innerClass")
     var innerClass: TestObjectGson? = null
 

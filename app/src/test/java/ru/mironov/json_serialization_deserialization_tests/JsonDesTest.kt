@@ -20,8 +20,8 @@ class JsonDesTest {
 
     private var jsonString = ""
 
-    private val repeatCount = 5000
-    private val innerClasses = 20
+    private val repeatCount = 50
+    private val innerClasses = 200
 
     @get:Rule
     var testName: TestName = TestName()
@@ -39,12 +39,15 @@ class JsonDesTest {
             var testObject = TestObjectGson()
             var currentObject = testObject
             repeat(innerClasses) {
+                val numb = it * repeatCount + ind
                 val innerObject = TestObjectGson(
-                    field1 = "value ${it + ind}",
-                    field2 = it + ind * 10,
+                    field1 = "value $numb",
+                    field2 = numb,
                     field3 = ind.rem(2) == 0,
-                    field4 = ind + it + 0.0,
-                    field5 = 1000000L + it + ind * 10
+                    field4 = numb + 0.1,
+                    field5 = 1000000L + numb,
+                    field7 = "abc$numb",
+                    field8 = ind.toByte()
                 )
                 currentObject.innerClass = innerObject
                 currentObject = currentObject.innerClass!!
@@ -52,35 +55,32 @@ class JsonDesTest {
             jsonString = gson.toJson(testObject)
             listObjectsStrings.add(jsonString)
         }
-        println()
     }
 
     @Test
     fun gsonTest() {
         var obj : TestObjectGson? = null
 
-        time = System.currentTimeMillis()
-
         listObjectsStrings.forEach {
+            time = System.currentTimeMillis()
             obj = gson.fromJson(it, object : TypeToken<TestObjectGson>() {}.type)
+            println(testName.methodName + ";" + (System.currentTimeMillis() - time))
         }
 
-        println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
-        assert(obj?.field6 == null)
+        assert(true)
     }
 
     @Test
     fun gsonTestWithoutAnnotations() {
         var obj : TestObjectGsonWoAn? = null
 
-        time = System.currentTimeMillis()
-
        listObjectsStrings.forEach {
-           gson.fromJson(it, object : TypeToken<TestObjectGsonWoAn>() {}.type)
+           time = System.currentTimeMillis()
+           obj = gson.fromJson(it, object : TypeToken<TestObjectGsonWoAn>() {}.type)
+           println(testName.methodName + ";" + (System.currentTimeMillis() - time))
         }
 
-        println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
-        assert(obj?.field6 == null)
+        assert(true)
     }
 
     @Test
@@ -90,14 +90,13 @@ class JsonDesTest {
         val format = Json { ignoreUnknownKeys = true }
         val serializer = TestObjectKotlinSerialization.serializer()
 
-        time = System.currentTimeMillis()
-
         listObjectsStrings.forEach {
+            time = System.currentTimeMillis()
             obj = format.decodeFromString(serializer, it)
+            println(testName.methodName + ";" + (System.currentTimeMillis() - time))
         }
 
-        println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
-        assert(obj?.field6 == null)
+        assert(true)
     }
 
     @Test
@@ -105,14 +104,13 @@ class JsonDesTest {
         var obj : TestObjectJackson? = null
         val mapper = ObjectMapper()
 
-        time = System.currentTimeMillis()
-
         listObjectsStrings.forEach {
+            time = System.currentTimeMillis()
             obj = mapper.readValue(it, TestObjectJackson::class.java)
+            println(testName.methodName + ";" + (System.currentTimeMillis() - time))
         }
 
-        println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
-        assert(obj?.field6 == null)
+        assert(true)
     }
 
     @Test
@@ -122,14 +120,14 @@ class JsonDesTest {
 
         var obj: TestObjectMoshi? = null
 
-        time = System.currentTimeMillis()
-
         listObjectsStrings.forEach {
+            time = System.currentTimeMillis()
             obj = jsonAdapter.fromJson(it)!!
+            println(testName.methodName + ";" + (System.currentTimeMillis() - time))
+
         }
 
-        println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
-        assert(obj?.field6 == null)
+        assert(true)
     }
 
 
