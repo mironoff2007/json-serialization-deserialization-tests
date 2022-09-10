@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 data class TestObjectJackson(
     @field:JsonProperty("field1")
     @param:JsonProperty("field1")
-    var field1: String? = "value1",
+    var field1: String? = null,
 
     @field:JsonProperty("field2")
     @param:JsonProperty("field2")

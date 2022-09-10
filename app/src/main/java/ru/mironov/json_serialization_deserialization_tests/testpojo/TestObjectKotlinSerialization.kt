@@ -9,7 +9,7 @@ import kotlinx.serialization.Serializable
 data class TestObjectKotlinSerialization(
 
     @SerialName("field1")
-    var field1: String? = "value1",
+    var field1: String? = null,
 
     @SerialName("field2")
     var field2: Int = 2,

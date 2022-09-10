@@ -1,7 +1,7 @@
 package ru.mironov.json_serialization_deserialization_tests.testpojo
 
 data class TestObjectGsonWoAn(
-    var field1: String? = "value1",
+    var field1: String? = null,
 
     var field2: Int = 2,
 

@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class TestObjectGson(
     @SerializedName("field1")
-    var field1: String? = "value",
+    var field1: String? = null,
 
     @SerializedName("field2")
     var field2: Int = -1,
