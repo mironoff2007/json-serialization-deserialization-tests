@@ -3,6 +3,8 @@ package ru.mironov.json_serialization_deserialization_tests
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.squareup.moshi.JsonAdapter
+import com.squareup.moshi.Moshi
 import kotlinx.serialization.json.Json
 import org.junit.Before
 import org.junit.Rule
@@ -107,6 +109,23 @@ class JsonDesTest {
 
         listObjectsStrings.forEach {
             obj = mapper.readValue(it, TestObjectJackson::class.java)
+        }
+
+        println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
+        assert(obj?.field6 == null)
+    }
+
+    @Test
+    fun moshiTest() {
+        val  moshi =  Moshi.Builder().build()
+        val jsonAdapter: JsonAdapter<TestObjectMoshi> = moshi.adapter(TestObjectMoshi::class.java)
+
+        var obj: TestObjectMoshi? = null
+
+        time = System.currentTimeMillis()
+
+        listObjectsStrings.forEach {
+            obj = jsonAdapter.fromJson(it)!!
         }
 
         println(testName.methodName + " avg-" + (System.currentTimeMillis() - time) + "ms")
