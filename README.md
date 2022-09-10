@@ -5,10 +5,8 @@ Comparison of json deserialization:
   <br />-gson without annotations
   <br />-jackson 
   <br />-kotlinx
-  <br />-moshi (see code https://github.com/mironoff2007/moshi-deserialization-test)
+  <br />-moshi 
   
-kotlin version for moshi - 1.3.72*
-kotlin version for other - 1.6.21
 
   Deserialization of list with 5000 objects-tree of 20 classes. Each object has 5 different fields (string,  double,  boolean, long, int) and field of class with same type and one field which is allways null.
   This object was generated with auto incremented fileds value and converted to json string. 
@@ -22,9 +20,6 @@ kotlin version for other - 1.6.21
 
 ![image](https://user-images.githubusercontent.com/18057056/188313406-da14eb1b-0f20-4ae3-8140-2e7070420c89.png)
 
-To reproduce find JsonDesTest.kt in test folder and run. Moshi test is located in separate repo,
- find JsonDesTest.kt in moshi repo, link is located above. 
 
-* big disadvantage of moshi is conflicts with kotlin version. I could not build moshi test with kotlin versions 1.5-1.7.  
-Maybe there is solution to build it,  but it is painfull to find it.  I love "out of the box" solutions.
- 
+
+
