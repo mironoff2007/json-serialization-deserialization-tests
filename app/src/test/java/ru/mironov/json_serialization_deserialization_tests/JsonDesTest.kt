@@ -40,11 +40,11 @@ class JsonDesTest {
             var currentObject = testObject
             repeat(innerClasses) {
                 val innerObject = TestObjectGson(
-                    field1 = "value $it",
-                    field2 = 10+it,
+                    field1 = "value ${it + ind}",
+                    field2 = it + ind * 10,
                     field3 = ind.rem(2) == 0,
-                    field4 = 0.0 + +it,
-                    field5 = 1000000L + it
+                    field4 = ind + it + 0.0,
+                    field5 = 1000000L + it + ind * 10
                 )
                 currentObject.innerClass = innerObject
                 currentObject = currentObject.innerClass!!
