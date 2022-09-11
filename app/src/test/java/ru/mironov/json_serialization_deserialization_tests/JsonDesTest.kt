@@ -6,6 +6,7 @@ import com.google.gson.reflect.TypeToken
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.JsonNull.serializer
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -16,118 +17,98 @@ class JsonDesTest {
 
     private var time = 0L
 
-    private val listObjectsStrings = mutableListOf<String>()
-
-    private var jsonString = ""
-
-    private val repeatCount = 50
+    private val repeatTestCount = 1
+    private val listSize = 100
     private val innerClasses = 200
+
+    private var jsonStringOfList = TestDataProvider.generateListString(listSize, innerClasses)//TestDataProvider.provideListObjects()
+
 
     @get:Rule
     var testName: TestName = TestName()
 
-    val gson = Gson()
-
-    init {
-        gson.serializeNulls()
-    }
-
     @Before
     fun before() {
-        listObjectsStrings.clear()
-        repeat(repeatCount) { ind ->
-            var testObject = TestObjectGson()
-            var currentObject = testObject
-            repeat(innerClasses) {
-                val numb = it * repeatCount + ind
-                val innerObject = TestObjectGson(
-                    field1 = "value $numb",
-                    field2 = numb,
-                    field3 = ind.rem(2) == 0,
-                    field4 = numb + 0.1,
-                    field5 = 1000000L + numb,
-                    field7 = "abc$numb",
-                    field8 = ind.toByte()
-                )
-                currentObject.innerClass = innerObject
-                currentObject = currentObject.innerClass!!
-            }
-            jsonString = gson.toJson(testObject)
-            listObjectsStrings.add(jsonString)
-        }
+
     }
 
     @Test
     fun gsonTest() {
-        var obj : TestObjectGson? = null
+        val gson = Gson()
+        gson.serializeNulls()
 
-        listObjectsStrings.forEach {
+        var obj : GsonList? = null
+
+        repeat(repeatTestCount) {
             time = System.currentTimeMillis()
-            obj = gson.fromJson(it, object : TypeToken<TestObjectGson>() {}.type)
+            obj = gson.fromJson(jsonStringOfList, object : TypeToken<GsonList>() {}.type)
             println(testName.methodName + ";" + (System.currentTimeMillis() - time))
         }
 
-        assert(true)
+        assert((obj?.list?.size ?: 0) == listSize)
     }
+
 
     @Test
     fun gsonTestWithoutAnnotations() {
-        var obj : TestObjectGsonWoAn? = null
+        val gson = Gson()
+        gson.serializeNulls()
 
-       listObjectsStrings.forEach {
-           time = System.currentTimeMillis()
-           obj = gson.fromJson(it, object : TypeToken<TestObjectGsonWoAn>() {}.type)
-           println(testName.methodName + ";" + (System.currentTimeMillis() - time))
+        var obj: GsonWoAnList? = null
+
+        repeat(repeatTestCount) {
+            time = System.currentTimeMillis()
+            obj = gson.fromJson(jsonStringOfList, object : TypeToken<GsonWoAnList>() {}.type)
+            println(testName.methodName + ";" + (System.currentTimeMillis() - time))
         }
 
-        assert(true)
+        assert((obj?.list?.size ?: 0) == listSize)
     }
 
     @Test
     fun kotlinSerializationTest() {
-        var obj : TestObjectKotlinSerialization? = null
+        var obj : KotlinXList? = null
 
         val format = Json { ignoreUnknownKeys = true }
-        val serializer = TestObjectKotlinSerialization.serializer()
+        val serializer = KotlinXList.serializer()
 
-        listObjectsStrings.forEach {
+        repeat(repeatTestCount) {
             time = System.currentTimeMillis()
-            obj = format.decodeFromString(serializer, it)
+            obj = format.decodeFromString(serializer, jsonStringOfList)
             println(testName.methodName + ";" + (System.currentTimeMillis() - time))
         }
 
-        assert(true)
+        assert((obj?.list?.size ?: 0) == listSize)
     }
 
     @Test
     fun jacksonTest() {
-        var obj : TestObjectJackson? = null
+        var obj : JacksonList? = null
         val mapper = ObjectMapper()
 
-        listObjectsStrings.forEach {
+        repeat(repeatTestCount) {
             time = System.currentTimeMillis()
-            obj = mapper.readValue(it, TestObjectJackson::class.java)
+            obj = mapper.readValue(jsonStringOfList, JacksonList::class.java)
             println(testName.methodName + ";" + (System.currentTimeMillis() - time))
         }
 
-        assert(true)
+        assert((obj?.list?.size ?: 0) == listSize)
     }
 
     @Test
     fun moshiTest() {
         val  moshi =  Moshi.Builder().build()
-        val jsonAdapter: JsonAdapter<TestObjectMoshi> = moshi.adapter(TestObjectMoshi::class.java)
+        val jsonAdapter: JsonAdapter<MoshiList> = moshi.adapter(MoshiList::class.java)
 
-        var obj: TestObjectMoshi? = null
+        var obj: MoshiList? = null
 
-        listObjectsStrings.forEach {
+        repeat(repeatTestCount) {
             time = System.currentTimeMillis()
-            obj = jsonAdapter.fromJson(it)!!
+            obj = jsonAdapter.fromJson(jsonStringOfList)!!
             println(testName.methodName + ";" + (System.currentTimeMillis() - time))
-
         }
 
-        assert(true)
+        assert((obj?.list?.size ?: 0) == listSize)
     }
 
 
