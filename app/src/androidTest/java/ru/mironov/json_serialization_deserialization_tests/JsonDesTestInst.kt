@@ -15,6 +15,7 @@ import org.junit.Test
 import org.junit.rules.TestName
 import ru.mironov.json_serialization_deserialization_tests.testpojo.nested.TestDataProvider
 import ru.mironov.json_serialization_deserialization_tests.testpojo.nested.container.*
+import java.io.BufferedReader
 
 class JsonDesTestInst {
 
@@ -34,7 +35,15 @@ class JsonDesTestInst {
     fun before() {
         timeList.clear()
         val context = InstrumentationRegistry.getInstrumentation().targetContext
-        val jsonStringOfList = context.resources.openRawResource(R.raw.nested)
+        val stream = context.resources.openRawResource(R.raw.nested)
+        jsonStringOfList = stream.bufferedReader().use(BufferedReader::readText)
+    }
+
+    private fun printResult(testName: String){
+        val strB = StringBuilder()
+        strB.append(testName)
+        timeList.forEach { strB.append(";$it") }
+        Log.d("Test_tag", strB.toString())
     }
 
     @Test
@@ -44,16 +53,13 @@ class JsonDesTestInst {
 
         var obj : GsonList? = null
 
-
         repeat(repeatTestCount) {
             time = System.currentTimeMillis()
             obj = gson.fromJson(jsonStringOfList, object : TypeToken<GsonList>() {}.type)
             timeList.add(System.currentTimeMillis() - time)
         }
 
-        val strB = StringBuilder()
-        timeList.forEach { strB.append(";$it") }
-        Log.d("Test_tag", testName.methodName+";$strB")
+        printResult(testName.methodName)
 
         assert((obj?.list?.size ?: 0) == listSize)
     }
@@ -69,11 +75,10 @@ class JsonDesTestInst {
         repeat(repeatTestCount) {
             time = System.currentTimeMillis()
             obj = gson.fromJson(jsonStringOfList, object : TypeToken<GsonWoAnList>() {}.type)
+            timeList.add(System.currentTimeMillis() - time)
         }
 
-        val strB = StringBuilder()
-        timeList.forEach { strB.append(";$it") }
-        Log.d("Test_tag", testName.methodName+";$strB")
+        printResult(testName.methodName)
 
         assert((obj?.list?.size ?: 0) == listSize)
     }
@@ -88,11 +93,10 @@ class JsonDesTestInst {
         repeat(repeatTestCount) {
             time = System.currentTimeMillis()
             obj = format.decodeFromString(serializer, jsonStringOfList)
+            timeList.add(System.currentTimeMillis() - time)
         }
 
-        val strB = StringBuilder()
-        timeList.forEach { strB.append(";$it") }
-        Log.d("Test_tag", testName.methodName+";$strB")
+        printResult(testName.methodName)
 
         assert((obj?.list?.size ?: 0) == listSize)
     }
@@ -106,12 +110,10 @@ class JsonDesTestInst {
         repeat(repeatTestCount) {
             time = System.currentTimeMillis()
             obj = mapper.readValue(jsonStringOfList, JacksonList::class.java)
+            timeList.add(System.currentTimeMillis() - time)
         }
 
-
-        val strB = StringBuilder()
-        timeList.forEach { strB.append(";$it") }
-        Log.d("Test_tag", testName.methodName+";$strB")
+        printResult(testName.methodName)
 
         assert((obj?.list?.size ?: 0) == listSize)
     }
@@ -123,16 +125,13 @@ class JsonDesTestInst {
 
         var obj: MoshiList? = null
 
-        
-
         repeat(repeatTestCount) {
             time = System.currentTimeMillis()
             obj = jsonAdapter.fromJson(jsonStringOfList)!!
+            timeList.add(System.currentTimeMillis() - time)
         }
 
-        val strB = StringBuilder()
-        timeList.forEach { strB.append(";$it") }
-        Log.d("Test_tag", testName.methodName+";$strB")
+        printResult(testName.methodName)
 
         assert((obj?.list?.size ?: 0) == listSize)
     }
