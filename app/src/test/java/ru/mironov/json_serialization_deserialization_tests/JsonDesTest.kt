@@ -17,7 +17,7 @@ class JsonDesTest {
 
     private var time = 0L
 
-    private val repeatTestCount = 1
+    private val repeatTestCount = 100
     private val listSize = 100
     private val innerClasses = 200
 
@@ -39,10 +39,12 @@ class JsonDesTest {
 
         var obj : GsonList? = null
 
+        println()
+        print(testName.methodName)
         repeat(repeatTestCount) {
             time = System.currentTimeMillis()
             obj = gson.fromJson(jsonStringOfList, object : TypeToken<GsonList>() {}.type)
-            println(testName.methodName + ";" + (System.currentTimeMillis() - time))
+            print(";" + (System.currentTimeMillis() - time))
         }
 
         assert((obj?.list?.size ?: 0) == listSize)
@@ -56,10 +58,12 @@ class JsonDesTest {
 
         var obj: GsonWoAnList? = null
 
+        println()
+        print(testName.methodName)
         repeat(repeatTestCount) {
             time = System.currentTimeMillis()
             obj = gson.fromJson(jsonStringOfList, object : TypeToken<GsonWoAnList>() {}.type)
-            println(testName.methodName + ";" + (System.currentTimeMillis() - time))
+            print(";" + (System.currentTimeMillis() - time))
         }
 
         assert((obj?.list?.size ?: 0) == listSize)
@@ -72,10 +76,12 @@ class JsonDesTest {
         val format = Json { ignoreUnknownKeys = true }
         val serializer = KotlinXList.serializer()
 
+        println()
+        print(testName.methodName)
         repeat(repeatTestCount) {
             time = System.currentTimeMillis()
             obj = format.decodeFromString(serializer, jsonStringOfList)
-            println(testName.methodName + ";" + (System.currentTimeMillis() - time))
+            print(";" + (System.currentTimeMillis() - time))
         }
 
         assert((obj?.list?.size ?: 0) == listSize)
@@ -86,11 +92,14 @@ class JsonDesTest {
         var obj : JacksonList? = null
         val mapper = ObjectMapper()
 
+        println()
+        print(testName.methodName)
         repeat(repeatTestCount) {
             time = System.currentTimeMillis()
             obj = mapper.readValue(jsonStringOfList, JacksonList::class.java)
-            println(testName.methodName + ";" + (System.currentTimeMillis() - time))
+            print(";" + (System.currentTimeMillis() - time))
         }
+        println()
 
         assert((obj?.list?.size ?: 0) == listSize)
     }
@@ -102,10 +111,12 @@ class JsonDesTest {
 
         var obj: MoshiList? = null
 
+        println()
+        print(testName.methodName)
         repeat(repeatTestCount) {
             time = System.currentTimeMillis()
             obj = jsonAdapter.fromJson(jsonStringOfList)!!
-            println(testName.methodName + ";" + (System.currentTimeMillis() - time))
+            print(";" + (System.currentTimeMillis() - time))
         }
 
         assert((obj?.list?.size ?: 0) == listSize)
