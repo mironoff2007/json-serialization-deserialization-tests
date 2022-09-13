@@ -6,12 +6,12 @@ import com.google.gson.reflect.TypeToken
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.json.JsonNull.serializer
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestName
-import ru.mironov.json_serialization_deserialization_tests.testpojo.*
+import ru.mironov.json_serialization_deserialization_tests.testpojo.nested.TestDataProvider
+import ru.mironov.json_serialization_deserialization_tests.testpojo.nested.container.*
 
 class JsonDesTest {
 

@@ -1,7 +1,5 @@
-package ru.mironov.json_serialization_deserialization_tests.testpojo
+package ru.mironov.json_serialization_deserialization_tests.testpojo.nested
 
-import com.fasterxml.jackson.annotation.JsonProperty
-import com.google.gson.annotations.SerializedName
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

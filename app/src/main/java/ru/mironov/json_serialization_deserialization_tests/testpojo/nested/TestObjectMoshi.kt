@@ -1,8 +1,7 @@
-package ru.mironov.json_serialization_deserialization_tests.testpojo
+package ru.mironov.json_serialization_deserialization_tests.testpojo.nested
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import kotlinx.serialization.SerialName
 
 @JsonClass(generateAdapter = true)
 data class TestObjectMoshi(

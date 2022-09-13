@@ -1,9 +1,8 @@
-package ru.mironov.json_serialization_deserialization_tests.testpojo
+package ru.mironov.json_serialization_deserialization_tests.testpojo.nested
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
-import com.google.gson.annotations.SerializedName
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 data class TestObjectJackson(

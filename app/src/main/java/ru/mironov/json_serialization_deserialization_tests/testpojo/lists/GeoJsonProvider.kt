@@ -1,4 +1,4 @@
-package ru.mironov.json_serialization_deserialization_tests
+package ru.mironov.json_serialization_deserialization_tests.testpojo.lists
 
 object GeoJsonProvider {
     fun provideGeoJson(): String {

@@ -1,4 +1,4 @@
-package ru.mironov.json_serialization_deserialization_tests.testpojo
+package ru.mironov.json_serialization_deserialization_tests.testpojo.nested
 
 
 import com.google.gson.annotations.SerializedName

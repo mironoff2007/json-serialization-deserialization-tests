@@ -1,8 +1,8 @@
-package ru.mironov.json_serialization_deserialization_tests
+package ru.mironov.json_serialization_deserialization_tests.testpojo.nested
 
 import com.google.gson.Gson
-import ru.mironov.json_serialization_deserialization_tests.testpojo.GsonList
-import ru.mironov.json_serialization_deserialization_tests.testpojo.TestObjectGson
+import ru.mironov.json_serialization_deserialization_tests.testpojo.nested.container.GsonList
+import ru.mironov.json_serialization_deserialization_tests.testpojo.nested.TestObjectGson
 
 object TestDataProvider {
 
