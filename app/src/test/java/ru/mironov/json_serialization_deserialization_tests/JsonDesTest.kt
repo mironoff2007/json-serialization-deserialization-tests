@@ -19,7 +19,7 @@ class JsonDesTest {
     private var time = 0L
 
     private val repeatTestCount = 100
-    private val listSize = 100
+    private val listSize = 50
     private val innerClasses = 200
 
     //private var jsonStringOfList = TestDataProvider.provideListObjects()
