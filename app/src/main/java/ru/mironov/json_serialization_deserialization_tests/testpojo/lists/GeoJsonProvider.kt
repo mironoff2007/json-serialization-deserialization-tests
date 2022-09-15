@@ -1,6 +1,25 @@
 package ru.mironov.json_serialization_deserialization_tests.testpojo.lists
 
+import android.content.Context
+import android.content.res.Resources
+import android.util.Log
+import ru.mironov.json_serialization_deserialization_tests.R
+
 object GeoJsonProvider {
+
+    fun readJson(context: Context): String {
+        return  try {
+            val res: Resources = context.resources
+            val inputStream = res.openRawResource(R.raw.geojson)
+            val b = ByteArray(inputStream.available())
+            inputStream.read(b)
+            b.decodeToString()
+        } catch (e: Exception) {
+            Log.d("JSON", e.stackTrace.joinToString("."))
+            ""
+        }
+    }
+
     fun provideGeoJson(): String {
 
         val jsonString = "{\n" +
