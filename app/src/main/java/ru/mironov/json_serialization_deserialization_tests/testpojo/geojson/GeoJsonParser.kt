@@ -1,4 +1,4 @@
-package ru.mironov.json_serialization_deserialization_tests.testpojo.lists
+package ru.mironov.json_serialization_deserialization_tests.testpojo.geojson
 
 import android.util.Log
 import com.fasterxml.jackson.databind.ObjectMapper
@@ -55,7 +55,7 @@ object GeoJsonParser {
                 geoJson.toGeoJson()
             }
         }
-        Log.d("Test_tag", "parse time;" + (time - System.currentTimeMillis()))
+        Log.d("Test_tag", ";" + (time - System.currentTimeMillis()))
         return geoJson
     }
 }

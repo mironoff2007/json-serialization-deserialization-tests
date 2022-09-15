@@ -1,16 +1,14 @@
-package ru.mironov.json_serialization_deserialization_tests.testpojo.lists
+package ru.mironov.json_serialization_deserialization_tests.testpojo.geojson
 
+import kotlinx.serialization.SerialName
+import kotlinx.serialization.Serializable
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
-
-data class GeoJsonGson(
-    @SerializedName("type")
-    @Expose
+@Serializable
+data class GeoJsonKotlinSerialization(
+    @SerialName("type")
     var type: String? = null,
 
-    @SerializedName("features")
-    @Expose
+    @SerialName("features")
     var features: List<Feature?>? = null
 ) {
     fun toGeoJson(): GeoJson {
@@ -30,24 +28,21 @@ data class GeoJsonGson(
         )
     }
 
-
+    @Serializable
     class Feature(
-        @SerializedName("type")
-        @Expose
+        @SerialName("type")
         var type: String? = null,
 
-        @SerializedName("geometry")
-        @Expose
+        @SerialName("geometry")
         var geometry: Geometry? = null
     )
 
+    @Serializable
     class Geometry(
-        @SerializedName("type")
-        @Expose
+        @SerialName("type")
         var type: String? = null,
 
-        @SerializedName("coordinates")
-        @Expose
+        @SerialName("coordinates")
         var coordinates: List<List<List<List<Double>?>?>?>? = null
     )
 }

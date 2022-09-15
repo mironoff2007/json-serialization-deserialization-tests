@@ -1,4 +1,4 @@
-package ru.mironov.json_serialization_deserialization_tests.testpojo.lists
+package ru.mironov.json_serialization_deserialization_tests.testpojo.geojson
 
 
 import com.fasterxml.jackson.annotation.JsonCreator

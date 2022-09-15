@@ -3,29 +3,26 @@ package ru.mironov.json_serialization_deserialization_tests
 
 import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
-import com.fasterxml.jackson.databind.ObjectMapper
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import com.squareup.moshi.JsonAdapter
-import com.squareup.moshi.Moshi
-import kotlinx.serialization.json.Json
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestName
-import ru.mironov.json_serialization_deserialization_tests.testpojo.lists.GeoJsonParser
-import ru.mironov.json_serialization_deserialization_tests.testpojo.nested.container.*
+import ru.mironov.json_serialization_deserialization_tests.testpojo.geojson.GeoJson
+import ru.mironov.json_serialization_deserialization_tests.testpojo.geojson.GeoJsonParser
 import java.io.BufferedReader
-
 
 class GeoJsonDesTest {
 
-    private var time = 0L
+    private var repeatParse = 50
+
+    lateinit var geoJson: GeoJson
 
     @get:Rule
     var testName: TestName = TestName()
     
-    var jsonString = ""
+    private var jsonString = ""
+
+    private val testTag = "Test_tag"
 
     @Before
     fun before() {
@@ -36,9 +33,11 @@ class GeoJsonDesTest {
 
     @Test
     fun gsonTest() {
-        Log.d("Test_tag", testName.methodName)
-        
-        val geoJson = GeoJsonParser.parse(jsonString, GeoJsonParser.Parser.GSON)
+        Log.d(testTag, testName.methodName)
+
+        repeat(repeatParse) {
+            geoJson = GeoJsonParser.parse(jsonString, GeoJsonParser.Parser.GSON)
+        }
 
         assert(geoJson.features?.isNotEmpty() ?: false)
     }
@@ -46,36 +45,44 @@ class GeoJsonDesTest {
 
     @Test
     fun gsonTestWithoutAnnotations() {
-        Log.d("Test_tag", testName.methodName)
+        Log.d(testTag, testName.methodName)
 
-        val geoJson = GeoJsonParser.parse(jsonString, GeoJsonParser.Parser.GSON_WO_AN)
+        repeat(repeatParse) {
+            geoJson = GeoJsonParser.parse(jsonString, GeoJsonParser.Parser.GSON_WO_AN)
+        }
 
         assert(geoJson.features?.isNotEmpty() ?: false)
     }
 
     @Test
     fun kotlinSerializationTest() {
-        Log.d("Test_tag", testName.methodName)
+        Log.d(testTag, testName.methodName)
 
-        val geoJson = GeoJsonParser.parse(jsonString, GeoJsonParser.Parser.KOTLINX)
+        repeat(repeatParse) {
+            geoJson = GeoJsonParser.parse(jsonString, GeoJsonParser.Parser.KOTLINX)
+        }
 
         assert(geoJson.features?.isNotEmpty() ?: false)
     }
 
     @Test
     fun jacksonTest() {
-        Log.d("Test_tag", testName.methodName)
+        Log.d(testTag, testName.methodName)
 
-        val geoJson = GeoJsonParser.parse(jsonString, GeoJsonParser.Parser.JACKSON)
+        repeat(repeatParse) {
+            geoJson = GeoJsonParser.parse(jsonString, GeoJsonParser.Parser.JACKSON)
+        }
 
         assert(geoJson.features?.isNotEmpty() ?: false)
     }
 
     @Test
     fun moshiTest() {
-        Log.d("Test_tag", testName.methodName)
+        Log.d(testTag, testName.methodName)
 
-        val geoJson = GeoJsonParser.parse(jsonString, GeoJsonParser.Parser.MOSHI)
+        repeat(repeatParse) {
+            geoJson = GeoJsonParser.parse(jsonString, GeoJsonParser.Parser.MOSHI)
+        }
 
         assert(geoJson.features?.isNotEmpty() ?: false)
     }
