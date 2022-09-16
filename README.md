@@ -25,7 +25,7 @@ Nested object test
 
 GeoJson test
 
-![image](https://user-images.githubusercontent.com/18057056/190706639-b3d85345-256c-4e63-9d07-e1484d6acfa7.png)
+![image](https://user-images.githubusercontent.com/18057056/190707233-b51ed6c4-28e3-4d4e-9359-037d0e888f4c.png)
 
 ![image](https://user-images.githubusercontent.com/18057056/190706308-e1d72940-090e-4227-902c-1fe78bd9a059.png)
 
