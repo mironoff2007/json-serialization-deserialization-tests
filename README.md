@@ -7,8 +7,9 @@ Comparison of json deserialization:
   <br />-kotlinx
   <br />-moshi 
   
-  1) Deserialization of list with 50 objects-tree of 200 inner classes.
-  2) Deserialization of big geo json with coorinates of polylines.
+  1) Deserialization of list with 50 objects-tree of 200 inner classes. 
+   *moshi can't deserialize more deep nested object than about 200, list of such objects is added to increase parse time, parse time of 1 object is too low)
+  3) Deserialization of big geo json with coorinates of polylines.
   Json string for 2 cases is located in .json file approx. 1.3 Mb in raw resources.
 
   Test devices
