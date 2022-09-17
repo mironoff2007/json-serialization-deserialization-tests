@@ -19,16 +19,16 @@ Comparison of json deserialization:
 
 Nested object test 
 
-![image](https://user-images.githubusercontent.com/18057056/190845720-da8a6b94-213b-4ce8-8512-af884018df19.png)
+<img src="https://user-images.githubusercontent.com/18057056/190845720-da8a6b94-213b-4ce8-8512-af884018df19.png" width="700" height="350">
 
-![image](https://user-images.githubusercontent.com/18057056/190845738-d1fd8736-93bf-48d6-ae5d-cd0bdad4bc6f.png)
+<img src="https://user-images.githubusercontent.com/18057056/190845738-d1fd8736-93bf-48d6-ae5d-cd0bdad4bc6f.png"  width="700" height="350">
 
-![image](https://user-images.githubusercontent.com/18057056/190845796-ace2196c-3fea-4776-95d0-956f6eae5f45.png)
+<img src="https://user-images.githubusercontent.com/18057056/190845796-ace2196c-3fea-4776-95d0-956f6eae5f45.png"  width="700" height="350">
 
 GeoJson test
 
-![image](https://user-images.githubusercontent.com/18057056/190845823-96def309-1a52-45e8-a74d-b976520eee8c.png)
+<img src="https://user-images.githubusercontent.com/18057056/190845823-96def309-1a52-45e8-a74d-b976520eee8c.png"  width="700" height="350">
 
-![image](https://user-images.githubusercontent.com/18057056/190845836-3965a5f5-d5d7-4fb8-a10c-23e0a47092fc.png)
+<img src="https://user-images.githubusercontent.com/18057056/190845836-3965a5f5-d5d7-4fb8-a10c-23e0a47092fc.png" width="700" height="350">
 
-![image](https://user-images.githubusercontent.com/18057056/190845849-9e00c145-ef7a-4ebd-aefd-21e2f7e5d268.png)
+<img src="https://user-images.githubusercontent.com/18057056/190845849-9e00c145-ef7a-4ebd-aefd-21e2f7e5d268.png" width="700" height="350">
