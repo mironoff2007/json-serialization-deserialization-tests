@@ -18,16 +18,17 @@ Comparison of json deserialization:
   3) Emulator Pixel 4 api 29 (emu) (notebook i7-4600u, 16 gb ram)
 
 Nested object test 
-![image](https://user-images.githubusercontent.com/18057056/190706053-388c0293-2df9-4d8c-9cd7-52d3769b72e7.png)
 
-![image](https://user-images.githubusercontent.com/18057056/190706116-abafa661-b02a-43cd-b06c-3f0e8d6d5052.png)
+![image](https://user-images.githubusercontent.com/18057056/190845720-da8a6b94-213b-4ce8-8512-af884018df19.png)
 
-![image](https://user-images.githubusercontent.com/18057056/190706158-ca5a8bd9-18ea-4c5b-8771-cbd4b0bc6b3e.png)
+![image](https://user-images.githubusercontent.com/18057056/190845738-d1fd8736-93bf-48d6-ae5d-cd0bdad4bc6f.png)
+
+![image](https://user-images.githubusercontent.com/18057056/190845796-ace2196c-3fea-4776-95d0-956f6eae5f45.png)
 
 GeoJson test
 
-![image](https://user-images.githubusercontent.com/18057056/190707233-b51ed6c4-28e3-4d4e-9359-037d0e888f4c.png)
+![image](https://user-images.githubusercontent.com/18057056/190845823-96def309-1a52-45e8-a74d-b976520eee8c.png)
 
-![image](https://user-images.githubusercontent.com/18057056/190706308-e1d72940-090e-4227-902c-1fe78bd9a059.png)
+![image](https://user-images.githubusercontent.com/18057056/190845836-3965a5f5-d5d7-4fb8-a10c-23e0a47092fc.png)
 
-![image](https://user-images.githubusercontent.com/18057056/190706714-9d0aa3b8-a5f7-423c-83d4-cab40d8d1886.png)
+![image](https://user-images.githubusercontent.com/18057056/190845849-9e00c145-ef7a-4ebd-aefd-21e2f7e5d268.png)
