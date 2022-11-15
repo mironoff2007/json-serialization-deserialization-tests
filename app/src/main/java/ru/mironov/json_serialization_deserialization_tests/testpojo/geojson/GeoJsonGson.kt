@@ -5,21 +5,22 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 data class GeoJsonGson(
-    @SerializedName("type")
-    @Expose
-    var type: String? = null,
 
     @SerializedName("features")
     @Expose
-    var features: List<Feature?>? = null
-) {
+    private val _features: List<Feature>? = null
+
+) : BaseGeoJson() {
+
+    val features by lazy { _features ?: emptyList() }
+
     fun toGeoJson(): GeoJson {
-        val features = this.features?.map {
+        val features = this.features.map {
             GeoJson.Feature(
-                type = it?.type,
+                type = it.type,
                 geometry = GeoJson.Geometry(
-                    type = it?.geometry?.type,
-                    coordinates = it?.geometry?.coordinates
+                    type = it.geometry.type,
+                    coordinates = it.geometry.coordinates
                 )
             )
         }
@@ -30,24 +31,29 @@ data class GeoJsonGson(
         )
     }
 
-
     class Feature(
-        @SerializedName("type")
-        @Expose
-        var type: String? = null,
 
         @SerializedName("geometry")
         @Expose
-        var geometry: Geometry? = null
-    )
+        private val _geometry: Geometry? = null
+
+    ) : BaseGeoJson() {
+        val geometry by lazy { _geometry ?: Geometry() }
+    }
 
     class Geometry(
-        @SerializedName("type")
-        @Expose
-        var type: String? = null,
-
         @SerializedName("coordinates")
         @Expose
-        var coordinates: List<List<List<List<Double>?>?>?>? = null
-    )
+        private val _coordinates: List<List<List<List<Double>?>?>?>? = null
+    ) : BaseGeoJson() {
+        val coordinates by lazy { _coordinates ?: emptyList() }
+    }
+}
+
+open class BaseGeoJson(
+    @SerializedName("type")
+    @Expose
+    val _type: String? = null,
+) {
+    val type by lazy { _type ?: "" }
 }

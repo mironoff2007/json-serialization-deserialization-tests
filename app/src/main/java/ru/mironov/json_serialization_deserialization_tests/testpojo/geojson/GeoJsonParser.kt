@@ -6,6 +6,8 @@ import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.squareup.moshi.JsonAdapter
 import com.squareup.moshi.Moshi
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import kotlinx.serialization.json.Json
 
 object GeoJsonParser {
@@ -14,7 +16,7 @@ object GeoJsonParser {
         GSON, GSON_WO_AN, JACKSON, KOTLINX, MOSHI
     }
 
-    fun parse(jsonString: String, parserType: Parser): GeoJson{
+    fun parse(jsonString: String, parserType: Parser): GeoJson {
         var time = 0L
         val geoJson = when (parserType){
             Parser.GSON ->{

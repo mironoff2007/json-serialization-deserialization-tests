@@ -18,7 +18,7 @@ class JsonDesTest {
 
     private var time = 0L
 
-    private val repeatTestCount = 100
+    private val repeatTestCount = 10
     private val listSize = 50
     private val innerClasses = 200
 

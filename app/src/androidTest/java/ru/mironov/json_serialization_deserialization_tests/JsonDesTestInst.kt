@@ -21,11 +21,11 @@ class JsonDesTestInst {
 
     private var time = 0L
 
-    private val repeatTestCount = 20
+    private val repeatTestCount = 1
     private val listSize = 50
     private val innerClasses = 200
 
-    private var jsonStringOfList = ""//TestDataProvider.generateListString(listSize, innerClasses)
+    private var jsonStringOfList = TestDataProvider.generateListString(listSize, innerClasses)
 
     private val timeList = mutableListOf<Long>()
     @get:Rule

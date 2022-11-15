@@ -28,6 +28,15 @@ data class TestObjectGson(
     @SerializedName("field8")
     var field8: Byte? = null,
 
+    @Transient
+    var field9: Byte? = null,
+
+    @Transient
+    var field10: Byte? = null,
+
+    @Transient
+    var field11: Byte? = null,
+
     @SerializedName("innerClass")
     var innerClass: TestObjectGson? = null
 

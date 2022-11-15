@@ -13,7 +13,7 @@ import java.io.BufferedReader
 
 class GeoJsonDesTest {
 
-    private var repeatParse = 50
+    private var repeatParse = 5
 
     lateinit var geoJson: GeoJson
 
