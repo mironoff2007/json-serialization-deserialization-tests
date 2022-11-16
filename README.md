@@ -3,9 +3,10 @@
 Comparison of json deserialization:
   <br />-gson
   <br />-gson without annotations
-  <br />-jackson 
+  <br />-jackson (Strongly NOT recommended to use with android*)
   <br />-kotlinx
   <br />-moshi 
+  
   
   1) Deserialization of list with 50 objects-tree of 200 inner classes. 
    *moshi can't deserialize more deep nested object than about 200, list of such objects is added to increase parse time, parse time of 1 object is too low)
@@ -32,3 +33,7 @@ GeoJson test
 <img src="https://user-images.githubusercontent.com/18057056/190845836-3965a5f5-d5d7-4fb8-a10c-23e0a47092fc.png" width="700" height="350">
 
 <img src="https://user-images.githubusercontent.com/18057056/190845849-9e00c145-ef7a-4ebd-aefd-21e2f7e5d268.png" width="700" height="350">
+
+
+*Jackson has problems with android 
+see https://github.com/FasterXML/jackson-module-kotlin/issues/69
